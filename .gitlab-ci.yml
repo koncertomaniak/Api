@@ -1,0 +1,28 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+  - test
+
+services:
+  - name: postgres:14.5-alpine
+    alias: postgres
+
+variables:
+  POSTGRES_DB: koncertomaniak
+  POSTGRES_USER: test
+  POSTGRES_PASSWORD: test
+  POSTGRES_HOST_AUTH_METHOD: trust
+
+before_script:
+  - "dotnet restore"
+
+test:
+  stage: test
+  variables:
+    POSTGRES_CONNECTION_STRING: "Server=postgres;Database=koncertomaniak;Uid=test;Pwd=test;"
+  script:
+    - "export PATH=\"$PATH:/root/.dotnet/tools\""
+    - "sh scripts/dev_tools.sh"
+    - "sh scripts/migration.sh"
+    - "dotnet build --no-restore"
+    - "dotnet test --no-restore --no-build"

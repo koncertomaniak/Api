@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="12.0.0" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+        <PackageReference Include="Lamar" Version="8.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.11" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.11">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.11" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Shared\Koncertomaniak.Api.Shared.Infrastructure\Koncertomaniak.Api.Shared.Infrastructure.csproj" />
+        <ProjectReference Include="..\Koncertomaniak.Api.Module.Event.Core\Koncertomaniak.Api.Module.Event.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Lamar">
+            <HintPath>..\..\..\..\..\..\..\.nuget\packages\lamar\8.0.1\lib\net6.0\Lamar.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>
