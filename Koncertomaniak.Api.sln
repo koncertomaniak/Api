@@ -21,6 +21,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Integrat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.UnitTests", "test\Koncertomaniak.Api.UnitTests\Koncertomaniak.Api.UnitTests.csproj", "{9C799247-F702-43AB-88FF-7FDA8E3291B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{53E10DE1-00EC-4DA8-8C22-56C7F2D88973}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Event", "Event", "{648F0054-B6F5-443E-993F-7EB9F0554396}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.Event.Api", "src\Modules\Event\Koncertomaniak.Api.Module.Event.Api\Koncertomaniak.Api.Module.Event.Api.csproj", "{07F26663-8913-409B-A588-9A3EBAC36B49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.Event.Core", "src\Modules\Event\Koncertomaniak.Api.Module.Event.Core\Koncertomaniak.Api.Module.Event.Core.csproj", "{62AC8548-A63E-47E7-AB4B-5CF7C5E1002C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.Event.Application", "src\Modules\Event\Koncertomaniak.Api.Module.Event.Application\Koncertomaniak.Api.Module.Event.Application.csproj", "{CBDF85BA-BD27-41F6-8018-0BA7F1614502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.Event.Infrastructure", "src\Modules\Event\Koncertomaniak.Api.Module.Event.Infrastructure\Koncertomaniak.Api.Module.Event.Infrastructure.csproj", "{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +62,22 @@ Global
 		{9C799247-F702-43AB-88FF-7FDA8E3291B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C799247-F702-43AB-88FF-7FDA8E3291B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C799247-F702-43AB-88FF-7FDA8E3291B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07F26663-8913-409B-A588-9A3EBAC36B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F26663-8913-409B-A588-9A3EBAC36B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F26663-8913-409B-A588-9A3EBAC36B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F26663-8913-409B-A588-9A3EBAC36B49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62AC8548-A63E-47E7-AB4B-5CF7C5E1002C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62AC8548-A63E-47E7-AB4B-5CF7C5E1002C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62AC8548-A63E-47E7-AB4B-5CF7C5E1002C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62AC8548-A63E-47E7-AB4B-5CF7C5E1002C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBDF85BA-BD27-41F6-8018-0BA7F1614502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBDF85BA-BD27-41F6-8018-0BA7F1614502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBDF85BA-BD27-41F6-8018-0BA7F1614502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBDF85BA-BD27-41F6-8018-0BA7F1614502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1B8A674C-7C02-468C-B260-E76288DDD11A} = {A5F97449-DA3D-494C-9EE1-1CF67CD73C9E}
@@ -59,5 +87,11 @@ Global
 		{0DCD0F82-D9C6-4EBC-9ABF-EE3684ED9A8E} = {5D72FE54-0926-4893-9FB0-E4C1D7AD4301}
 		{6E2AB750-5E61-401D-847E-0EC87CFA518B} = {0CB293A3-F887-4E68-82A2-32E198D5A9A6}
 		{9C799247-F702-43AB-88FF-7FDA8E3291B5} = {0CB293A3-F887-4E68-82A2-32E198D5A9A6}
+		{53E10DE1-00EC-4DA8-8C22-56C7F2D88973} = {A5F97449-DA3D-494C-9EE1-1CF67CD73C9E}
+		{648F0054-B6F5-443E-993F-7EB9F0554396} = {53E10DE1-00EC-4DA8-8C22-56C7F2D88973}
+		{07F26663-8913-409B-A588-9A3EBAC36B49} = {648F0054-B6F5-443E-993F-7EB9F0554396}
+		{62AC8548-A63E-47E7-AB4B-5CF7C5E1002C} = {648F0054-B6F5-443E-993F-7EB9F0554396}
+		{CBDF85BA-BD27-41F6-8018-0BA7F1614502} = {648F0054-B6F5-443E-993F-7EB9F0554396}
+		{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D} = {648F0054-B6F5-443E-993F-7EB9F0554396}
 	EndGlobalSection
 EndGlobal

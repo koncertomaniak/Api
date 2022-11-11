@@ -1,0 +1,14 @@
+version: '3.9'
+volumes:
+  postgres-db:
+services:
+  postgres:
+    image: postgres:14.5-bullseye
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: koncertomaniak

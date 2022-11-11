@@ -1,15 +1,30 @@
+using Koncertomaniak.Api.Module.Event.Api;
+using Lamar;
+using Lamar.Microsoft.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var registry = new ServiceRegistry();
+
+registry.IncludeRegistry<EventRegistry>();
+registry.Scan(x =>
+{
+    x.TheCallingAssembly();
+    x.WithDefaultConventions();
+});
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddLamar(registry);
+
+builder.Host.UseLamar();
+
+// Modules
+builder.Services.AddEventModule();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -18,8 +33,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Modules
+app.UseEventModule();
+
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+
+public partial class Program
+{
+}
