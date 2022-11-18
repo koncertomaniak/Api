@@ -1,4 +1,3 @@
-using Koncertomaniak.Api.Module.Event.Application;
 using Koncertomaniak.Api.Module.Event.Infrastructure;
 using Lamar;
 
@@ -9,6 +8,5 @@ public class EventRegistry : ServiceRegistry
     public EventRegistry()
     {
         IncludeRegistry<EventInfrastructureRegistry>();
-        IncludeRegistry<EventApplicationRegistry>();
     }
 }

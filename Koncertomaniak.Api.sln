@@ -33,6 +33,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.Event.Infrastructure", "src\Modules\Event\Koncertomaniak.Api.Module.Event.Infrastructure\Koncertomaniak.Api.Module.Event.Infrastructure.csproj", "{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ticket", "Ticket", "{78A0D2A7-BE95-4EBB-BF9E-BDC8E548AAC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.Ticket.Api", "src\Modules\Ticket\Koncertomaniak.Api.Module.Ticket.Api\Koncertomaniak.Api.Module.Ticket.Api.csproj", "{0E71467D-ECD8-437B-8E46-67FEB8267BA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.Ticket.Core", "src\Modules\Ticket\Koncertomaniak.Api.Module.Ticket.Core\Koncertomaniak.Api.Module.Ticket.Core.csproj", "{36E9D0A7-BB7F-406A-8EFF-D605373C4F64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.Ticket.Application", "src\Modules\Ticket\Koncertomaniak.Api.Module.Ticket.Application\Koncertomaniak.Api.Module.Ticket.Application.csproj", "{FF67F438-52CD-4750-8610-B48939071AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koncertomaniak.Api.Module.Ticket.Infrastructure", "src\Modules\Ticket\Koncertomaniak.Api.Module.Ticket.Infrastructure\Koncertomaniak.Api.Module.Ticket.Infrastructure.csproj", "{E9C040ED-B810-41A3-96FA-4DC836C6147F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +88,22 @@ Global
 		{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E71467D-ECD8-437B-8E46-67FEB8267BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E71467D-ECD8-437B-8E46-67FEB8267BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E71467D-ECD8-437B-8E46-67FEB8267BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E71467D-ECD8-437B-8E46-67FEB8267BA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36E9D0A7-BB7F-406A-8EFF-D605373C4F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36E9D0A7-BB7F-406A-8EFF-D605373C4F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36E9D0A7-BB7F-406A-8EFF-D605373C4F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36E9D0A7-BB7F-406A-8EFF-D605373C4F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF67F438-52CD-4750-8610-B48939071AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF67F438-52CD-4750-8610-B48939071AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF67F438-52CD-4750-8610-B48939071AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF67F438-52CD-4750-8610-B48939071AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9C040ED-B810-41A3-96FA-4DC836C6147F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9C040ED-B810-41A3-96FA-4DC836C6147F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9C040ED-B810-41A3-96FA-4DC836C6147F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9C040ED-B810-41A3-96FA-4DC836C6147F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1B8A674C-7C02-468C-B260-E76288DDD11A} = {A5F97449-DA3D-494C-9EE1-1CF67CD73C9E}
@@ -93,5 +119,10 @@ Global
 		{62AC8548-A63E-47E7-AB4B-5CF7C5E1002C} = {648F0054-B6F5-443E-993F-7EB9F0554396}
 		{CBDF85BA-BD27-41F6-8018-0BA7F1614502} = {648F0054-B6F5-443E-993F-7EB9F0554396}
 		{3A7B1310-DC0D-4BF1-9EFC-E9CB63AB1F4D} = {648F0054-B6F5-443E-993F-7EB9F0554396}
+		{78A0D2A7-BE95-4EBB-BF9E-BDC8E548AAC3} = {53E10DE1-00EC-4DA8-8C22-56C7F2D88973}
+		{0E71467D-ECD8-437B-8E46-67FEB8267BA4} = {78A0D2A7-BE95-4EBB-BF9E-BDC8E548AAC3}
+		{36E9D0A7-BB7F-406A-8EFF-D605373C4F64} = {78A0D2A7-BE95-4EBB-BF9E-BDC8E548AAC3}
+		{FF67F438-52CD-4750-8610-B48939071AD2} = {78A0D2A7-BE95-4EBB-BF9E-BDC8E548AAC3}
+		{E9C040ED-B810-41A3-96FA-4DC836C6147F} = {78A0D2A7-BE95-4EBB-BF9E-BDC8E548AAC3}
 	EndGlobalSection
 EndGlobal

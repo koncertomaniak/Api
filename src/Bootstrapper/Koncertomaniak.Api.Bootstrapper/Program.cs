@@ -1,12 +1,25 @@
 using Koncertomaniak.Api.Module.Event.Api;
+using Koncertomaniak.Api.Module.Event.Application.Commands.Events.GetEvents;
+using Koncertomaniak.Api.Module.Ticket.Api;
+using Koncertomaniak.Api.Module.Ticket.Application.Commands.Tickets;
+using Koncertomaniak.Api.Shared.Infrastructure.Mapper;
 using Lamar;
 using Lamar.Microsoft.DependencyInjection;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
-
 var registry = new ServiceRegistry();
 
+var assemblies = new[]
+{
+    typeof(GetEventsRequestHandler).Assembly,
+    typeof(GetTicketsProvidersRequestHandler).Assembly
+};
+
+registry.AddMediatR(assemblies);
 registry.IncludeRegistry<EventRegistry>();
+registry.IncludeRegistry<TicketRegistry>();
+registry.AddAutoMapper(typeof(KoncertomaniakMapperProfile));
 registry.Scan(x =>
 {
     x.TheCallingAssembly();
@@ -22,6 +35,7 @@ builder.Host.UseLamar();
 
 // Modules
 builder.Services.AddEventModule();
+builder.Services.AddTicketModule();
 
 var app = builder.Build();
 
@@ -35,6 +49,7 @@ app.UseHttpsRedirection();
 
 // Modules
 app.UseEventModule();
+app.UseTicketModule();
 
 app.UseAuthorization();
 

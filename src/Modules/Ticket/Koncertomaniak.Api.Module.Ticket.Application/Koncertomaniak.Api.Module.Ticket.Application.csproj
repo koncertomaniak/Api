@@ -12,8 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Koncertomaniak.Api.Module.Event.Core\Koncertomaniak.Api.Module.Event.Core.csproj"/>
-        <ProjectReference Include="..\Koncertomaniak.Api.Module.Event.Infrastructure\Koncertomaniak.Api.Module.Event.Infrastructure.csproj"/>
+        <ProjectReference Include="..\Koncertomaniak.Api.Module.Ticket.Core\Koncertomaniak.Api.Module.Ticket.Core.csproj"/>
+        <ProjectReference Include="..\Koncertomaniak.Api.Module.Ticket.Infrastructure\Koncertomaniak.Api.Module.Ticket.Infrastructure.csproj"/>
     </ItemGroup>
 
 </Project>

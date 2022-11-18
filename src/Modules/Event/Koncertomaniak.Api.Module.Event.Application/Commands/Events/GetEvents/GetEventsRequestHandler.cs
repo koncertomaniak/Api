@@ -2,7 +2,7 @@ using AutoMapper;
 using Koncertomaniak.Api.Module.Event.Core.Dtos;
 using Koncertomaniak.Api.Module.Event.Core.Models;
 using Koncertomaniak.Api.Module.Event.Infrastructure.Dal.Repositories;
-using Mediator;
+using MediatR;
 
 namespace Koncertomaniak.Api.Module.Event.Application.Commands.Events.GetEvents;
 
@@ -17,7 +17,7 @@ public class GetEventsRequestHandler : IRequestHandler<GetEventsModel, EventColl
         _mapper = mapper;
     }
 
-    public async ValueTask<EventCollectionDto[]> Handle(GetEventsModel request, CancellationToken cancellationToken)
+    public async Task<EventCollectionDto[]> Handle(GetEventsModel request, CancellationToken cancellationToken)
     {
         var events = await _eventRepository.GetEvents(request.Page);
         var eventsCollection = _mapper.Map<List<Core.Entities.Event>, EventCollectionDto[]>(events);
