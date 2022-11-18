@@ -9,11 +9,13 @@
     <ItemGroup>
         <PackageReference Include="Lamar" Version="8.0.1"/>
         <PackageReference Include="Lamar.Microsoft.DependencyInjection" Version="8.0.1"/>
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\Modules\Event\Koncertomaniak.Api.Module.Event.Api\Koncertomaniak.Api.Module.Event.Api.csproj"/>
+        <ProjectReference Include="..\..\Modules\Ticket\Koncertomaniak.Api.Module.Ticket.Api\Koncertomaniak.Api.Module.Ticket.Api.csproj"/>
     </ItemGroup>
 
 </Project>

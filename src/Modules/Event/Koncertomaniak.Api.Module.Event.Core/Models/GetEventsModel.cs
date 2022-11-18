@@ -1,9 +1,6 @@
 using Koncertomaniak.Api.Module.Event.Core.Dtos;
-using Mediator;
+using MediatR;
 
 namespace Koncertomaniak.Api.Module.Event.Core.Models;
 
-public record GetEventsModel : IRequest<EventCollectionDto[]>
-{
-    public int Page { get; set; }
-}
+public record GetEventsModel(int Page) : IRequest<EventCollectionDto[]>;

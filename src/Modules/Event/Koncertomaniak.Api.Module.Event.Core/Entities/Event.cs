@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Koncertomaniak.Api.Module.Event.Core.Rules;
 using Koncertomaniak.Api.Shared.Abstractions;
 
 namespace Koncertomaniak.Api.Module.Event.Core.Entities;
 
+[Table("Events")]
 public class Event : BaseEntity
 {
     [MaxLength(EventEntityRules.MaxNameLenght)]
