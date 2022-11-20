@@ -10,7 +10,7 @@ public class KoncertomaniakMapperProfile : Profile
 {
     public KoncertomaniakMapperProfile()
     {
-        CreateMap<Event, EventCollectionDto>();
+        CreateMap<Event, EventDisplayInfoDto>();
         CreateMap<TicketProvider, TicketProviderDto>()
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ServiceName));
     }

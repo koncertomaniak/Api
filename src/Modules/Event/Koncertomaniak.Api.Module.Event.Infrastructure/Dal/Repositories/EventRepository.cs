@@ -18,7 +18,14 @@ public class EventRepository : IEventRepository
         return await Events.OrderBy(e => e.HappeningDate)
             .Skip(PageSize * page)
             .Take(PageSize)
+            .ToListAsync();
+    }
 
+    public async Task<List<Core.Entities.Event>> SearchEvents(string term, int page)
+    {
+        return await Events.Where(e => e.Name.ToLower().Contains(term.ToLower()))
+            .Skip(PageSize * page)
+            .Take(PageSize)
             .ToListAsync();
     }
 }

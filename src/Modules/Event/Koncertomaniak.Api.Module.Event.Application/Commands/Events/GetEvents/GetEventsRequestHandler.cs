@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Koncertomaniak.Api.Module.Event.Application.Commands.Events.GetEvents;
 
-public class GetEventsRequestHandler : IRequestHandler<GetEventsModel, EventCollectionDto[]>
+public class GetEventsRequestHandler : IRequestHandler<GetEventsModel, EventDisplayInfoDto[]>
 {
     private readonly IEventRepository _eventRepository;
     private readonly IMapper _mapper;
@@ -17,11 +17,11 @@ public class GetEventsRequestHandler : IRequestHandler<GetEventsModel, EventColl
         _mapper = mapper;
     }
 
-    public async Task<EventCollectionDto[]> Handle(GetEventsModel request, CancellationToken cancellationToken)
+    public async Task<EventDisplayInfoDto[]> Handle(GetEventsModel request, CancellationToken cancellationToken)
     {
         var events = await _eventRepository.GetEvents(request.Page);
-        var eventsCollection = _mapper.Map<List<Core.Entities.Event>, EventCollectionDto[]>(events);
+        var eventDisplayInfoCollection = _mapper.Map<List<Core.Entities.Event>, EventDisplayInfoDto[]>(events);
 
-        return eventsCollection;
+        return eventDisplayInfoCollection;
     }
 }

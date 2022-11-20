@@ -1,6 +1,6 @@
 namespace Koncertomaniak.Api.Module.Event.Core.Dtos;
 
-public record EventCollectionDto
+public class EventDisplayInfoDto
 {
     public Guid Id { get; set; }
     public string? Name { get; set; }
