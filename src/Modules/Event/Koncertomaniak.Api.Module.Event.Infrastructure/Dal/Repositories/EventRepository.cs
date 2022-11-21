@@ -15,7 +15,8 @@ public class EventRepository : IEventRepository
 
     public async Task<List<Core.Entities.Event>> GetEvents(int page)
     {
-        return await Events.OrderBy(e => e.HappeningDate)
+        return await Events.AsNoTracking()
+            .OrderBy(e => e.HappeningDate)
             .Skip(PageSize * page)
             .Take(PageSize)
             .ToListAsync();
@@ -23,7 +24,8 @@ public class EventRepository : IEventRepository
 
     public async Task<List<Core.Entities.Event>> SearchEvents(string term, int page)
     {
-        return await Events.Where(e => e.Name.ToLower().Contains(term.ToLower()))
+        return await Events.AsNoTracking()
+            .Where(e => e.Name.ToLower().Contains(term.ToLower()))
             .Skip(PageSize * page)
             .Take(PageSize)
             .ToListAsync();
