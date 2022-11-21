@@ -14,7 +14,8 @@ public class TicketRepository : ITicketRepository
 
     public async Task<List<TicketProvider>> GetTicketProvidersByEventId(Guid eventId)
     {
-        return await TicketProviders.Where(e => e.Events.Id == eventId)
+        return await TicketProviders.AsNoTracking()
+            .Where(e => e.Events.Id == eventId)
             .ToListAsync();
     }
 }
