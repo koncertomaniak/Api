@@ -3,6 +3,7 @@ using Koncertomaniak.Api.Module.Event.Application.Commands.Events.GetEvents;
 using Koncertomaniak.Api.Module.Ticket.Api;
 using Koncertomaniak.Api.Module.Ticket.Application.Commands.Tickets;
 using Koncertomaniak.Api.Shared.Infrastructure.Mapper;
+using Koncertomaniak.Api.Shared.Infrastructure.Middlewares;
 using Lamar;
 using Lamar.Microsoft.DependencyInjection;
 using MediatR;
@@ -46,6 +47,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//Middlewares
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 // Modules
 app.UseEventModule();
