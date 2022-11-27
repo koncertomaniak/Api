@@ -1,4 +1,5 @@
 using Koncertomaniak.Api.Module.Event.Core.Models;
+using Koncertomaniak.Api.Shared.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,9 +15,10 @@ public class GetEventsController : BaseController
     public async Task<IActionResult> GetEvents([FromQuery] int page = 0)
     {
         var model = new GetEventsModel(page);
-
         var result = await Mediator.Send(model);
 
-        return Ok(result);
+        var response = new BaseResponseModel(result, null);
+
+        return Ok(response);
     }
 }

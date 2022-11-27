@@ -1,4 +1,5 @@
 ﻿using Koncertomaniak.Api.Module.Ticket.Core.Models;
+using Koncertomaniak.Api.Shared.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,8 @@ public class GetTicketProvidersController : BaseController
     {
         var result = await Mediator.Send(new GetTicketProvidersModel(eventId));
 
-        return Ok(result);
+        var response = new BaseResponseModel(result, null);
+
+        return Ok(response);
     }
 }
