@@ -13,6 +13,11 @@ WORKDIR /app
 
 COPY --from=build /app .
 
-EXPOSE 80 443
+RUN apk add --no-cache icu-libs
+
+EXPOSE 80
+EXPOSE 443
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
 CMD [ "dotnet", "Koncertomaniak.Api.Bootstrapper.dll" ]
