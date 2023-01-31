@@ -20,7 +20,7 @@ public class GetTicketsProvidersRequestHandler : IRequestHandler<GetTicketProvid
     public async Task<List<TicketProviderDto>> Handle(GetTicketProvidersModel request,
         CancellationToken cancellationToken)
     {
-        var providers = await _ticketRepository.GetTicketProvidersByEventId(request.EventId);
+        var providers = await _ticketRepository.GetEventTicketsByEventId(request.EventId);
         var providersDtos = _mapper.Map<List<TicketProviderDto>>(providers);
 
         return providersDtos;

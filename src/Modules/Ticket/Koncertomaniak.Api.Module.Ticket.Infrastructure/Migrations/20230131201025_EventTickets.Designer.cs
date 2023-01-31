@@ -3,6 +3,7 @@ using System;
 using Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Migrations
 {
     [DbContext(typeof(TicketDbContext))]
-    partial class TicketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230131201025_EventTickets")]
+    partial class EventTickets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +69,7 @@ namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Migrations
                     b.Property<Guid>("EventsPK")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("TicketProvidersPK")
+                    b.Property<Guid>("TicketProviderId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTimeOffset>("UpdatedAt")
@@ -81,7 +83,7 @@ namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Migrations
 
                     b.HasIndex("EventsPK");
 
-                    b.HasIndex("TicketProvidersPK");
+                    b.HasIndex("TicketProviderId");
 
                     b.ToTable("EventTickets");
                 });
@@ -122,7 +124,7 @@ namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Migrations
 
                     b.HasOne("Koncertomaniak.Api.Module.Ticket.Core.Entities.TicketProvider", "TicketProvider")
                         .WithMany()
-                        .HasForeignKey("TicketProvidersPK")
+                        .HasForeignKey("TicketProviderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

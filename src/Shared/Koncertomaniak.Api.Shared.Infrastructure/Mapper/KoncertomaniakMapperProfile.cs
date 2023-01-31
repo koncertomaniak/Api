@@ -11,7 +11,8 @@ public class KoncertomaniakMapperProfile : Profile
     public KoncertomaniakMapperProfile()
     {
         CreateMap<Event, EventDisplayInfoDto>();
-        CreateMap<TicketProvider, TicketProviderDto>()
-            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ServiceName));
+        CreateMap<EventTicket, TicketProviderDto>()
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.TicketProvider.ServiceName))
+            .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.TicketProvider.ImageUrl));
     }
 }

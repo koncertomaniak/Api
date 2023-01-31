@@ -4,5 +4,5 @@ namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal.Repositories;
 
 public interface ITicketRepository
 {
-    Task<List<TicketProvider>> GetTicketProvidersByEventId(Guid eventId);
+    Task<List<EventTicket>> GetEventTicketsByEventId(Guid eventId);
 }

@@ -11,10 +11,6 @@ public class TicketProvider : BaseEntity
 
     [Url] public string ImageUrl { get; set; } = null!;
 
-    [Url] public string Url { get; set; } = null!;
-
-    [ForeignKey("EventsPK")] public virtual Event.Core.Entities.Event Events { get; set; }
-
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset UpdatedAt { get; set; }
 }
