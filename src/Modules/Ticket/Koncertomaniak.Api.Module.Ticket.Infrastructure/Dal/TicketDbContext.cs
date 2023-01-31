@@ -7,6 +7,7 @@ namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal;
 
 public class TicketDbContext : DbContext
 {
+    internal DbSet<EventTicket> EventTickets { get; init; }
     internal DbSet<TicketProvider> TicketProviders { get; init; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -7,15 +7,16 @@ public class TicketRepository : ITicketRepository
 {
     public TicketRepository(TicketDbContext context)
     {
-        TicketProviders = context.TicketProviders;
+        EventTickets = context.EventTickets;
     }
 
-    private DbSet<TicketProvider> TicketProviders { get; }
+    private DbSet<EventTicket> EventTickets { get; }
 
-    public async Task<List<TicketProvider>> GetTicketProvidersByEventId(Guid eventId)
+    public async Task<List<EventTicket>> GetEventTicketsByEventId(Guid eventId)
     {
-        return await TicketProviders.AsNoTracking()
+        return await EventTickets.AsNoTracking()
             .Where(e => e.Events.Id == eventId)
+            .Include(e => e.TicketProvider)
             .ToListAsync();
     }
 }

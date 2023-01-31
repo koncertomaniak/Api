@@ -5,3 +5,4 @@ dotnet ef database update -p ./src/Modules/Ticket/Koncertomaniak.Api.Module.Tick
 psql --version
 psql -h postgres -p 5432 -U test -d koncertomaniak -f data/Events.sql < test 
 psql -h postgres -p 5432 -U test -d koncertomaniak -f data/TicketProviders.sql < test
+psql -h postgres -p 5432 -U test -d koncertomaniak -f data/EventTickets.sql < test 
