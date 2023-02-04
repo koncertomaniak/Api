@@ -6,18 +6,18 @@ using MediatR;
 
 namespace Koncertomaniak.Api.Module.Ticket.Application.Commands.Tickets;
 
-public class GetTicketsProvidersRequestHandler : IRequestHandler<GetTicketProvidersModel, List<TicketProviderDto>>
+public class GetEventTicketsRequestHandler : IRequestHandler<GetEventTicketsModel, List<TicketProviderDto>>
 {
     private readonly IMapper _mapper;
     private readonly ITicketRepository _ticketRepository;
 
-    public GetTicketsProvidersRequestHandler(ITicketRepository ticketRepository, IMapper mapper)
+    public GetEventTicketsRequestHandler(ITicketRepository ticketRepository, IMapper mapper)
     {
         _ticketRepository = ticketRepository;
         _mapper = mapper;
     }
 
-    public async Task<List<TicketProviderDto>> Handle(GetTicketProvidersModel request,
+    public async Task<List<TicketProviderDto>> Handle(GetEventTicketsModel request,
         CancellationToken cancellationToken)
     {
         var providers = await _ticketRepository.GetEventTicketsByEventId(request.EventId);

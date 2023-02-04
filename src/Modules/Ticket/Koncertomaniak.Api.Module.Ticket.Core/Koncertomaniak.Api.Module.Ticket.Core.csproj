@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Shared\Koncertomaniak.Api.Shared.Abstractions\Koncertomaniak.Api.Shared.Abstractions.csproj"/>
-        <ProjectReference Include="..\..\Event\Koncertomaniak.Api.Module.Event.Core\Koncertomaniak.Api.Module.Event.Core.csproj"/>
+        <ProjectReference Include="..\..\..\Shared\Koncertomaniak.Api.Shared.Abstractions\Koncertomaniak.Api.Shared.Abstractions.csproj" />
+        <ProjectReference Include="..\..\Event\Koncertomaniak.Api.Module.Event.Core\Koncertomaniak.Api.Module.Event.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="11.0.0"/>
+        <PackageReference Include="MediatR" Version="11.0.0" />
     </ItemGroup>
 
 </Project>
