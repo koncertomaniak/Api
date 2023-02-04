@@ -13,7 +13,7 @@ public class GetTicketsProvidersControllerTests
         await using var application = new WebServerFactoryFixture();
         using var client = application.CreateClient();
         using var response =
-            await client.GetAsync("tickets/GetTicketProviders?eventId=20dfe252-7f79-4fe1-86de-e757524e35be");
+            await client.GetAsync("tickets/GetEventTickets?eventId=20dfe252-7f79-4fe1-86de-e757524e35be");
 
         var deserializedResponse =
             JsonConvert.DeserializeObject<BaseResponseModel>(await response.Content.ReadAsStringAsync());

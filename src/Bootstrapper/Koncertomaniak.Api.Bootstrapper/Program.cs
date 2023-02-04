@@ -14,7 +14,7 @@ var registry = new ServiceRegistry();
 var assemblies = new[]
 {
     typeof(GetEventsRequestHandler).Assembly,
-    typeof(GetTicketsProvidersRequestHandler).Assembly
+    typeof(GetEventTicketsRequestHandler).Assembly
 };
 
 registry.AddMediatR(assemblies);
