@@ -10,6 +10,8 @@ public static class TicketModule
 {
     public static IServiceCollection AddTicketModule(this IServiceCollection services)
     {
+        services.InjectDbContext(new TicketDbContext());
+
         return services;
     }
 

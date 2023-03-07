@@ -7,4 +7,7 @@ public static class Environments
 
     public static bool AllowAutomaticMigration =>
         bool.Parse(Environment.GetEnvironmentVariable("ALLOW_AUTOMATIC_MIGRATION") ?? "false");
+
+    public static string RabbitMqUri =>
+        Environment.GetEnvironmentVariable("RABBITMQ_URI") ?? string.Empty;
 }

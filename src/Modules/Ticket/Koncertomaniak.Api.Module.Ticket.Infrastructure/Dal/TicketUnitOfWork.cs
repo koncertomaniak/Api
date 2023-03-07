@@ -1,14 +1,15 @@
-﻿using Koncertomaniak.Api.Shared.Infrastructure.Db;
+﻿using Lamar;
 
 namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal;
 
-public class TicketUnitOfWork : IUnitOfWork
+public class TicketUnitOfWork : ITicketUnitOfWork
 {
     private readonly TicketDbContext _context;
 
-    public TicketUnitOfWork(TicketDbContext context)
+    public TicketUnitOfWork(IContainer container)
     {
-        _context = context;
+        var dbContext = container.GetInstance<TicketDbContext>();
+        _context = dbContext;
     }
 
     public async Task CommitChanges()

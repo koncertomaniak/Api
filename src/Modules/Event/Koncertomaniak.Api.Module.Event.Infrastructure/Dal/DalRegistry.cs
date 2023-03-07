@@ -1,5 +1,4 @@
 using Koncertomaniak.Api.Module.Event.Infrastructure.Dal.Repositories;
-using Koncertomaniak.Api.Shared.Infrastructure.Db;
 using Lamar;
 
 namespace Koncertomaniak.Api.Module.Event.Infrastructure.Dal;
@@ -8,9 +7,10 @@ public class DalRegistry : ServiceRegistry
 {
     public DalRegistry()
     {
-        Use<EventDbContext>().Singleton();
+        //Use<EventDbContext>().Singleton();
+        //Injectable<EventDbContext>();
 
-        For<IUnitOfWork>().Use<EventUnitOfWork>().Transient();
+        For<IEventUnitOfWork>().Use<EventUnitOfWork>().Singleton();
         For<IEventRepository>().Use<EventRepository>().Singleton();
     }
 }

@@ -1,3 +1,4 @@
+using Lamar;
 using Microsoft.EntityFrameworkCore;
 
 namespace Koncertomaniak.Api.Module.Event.Infrastructure.Dal.Repositories;
@@ -6,12 +7,18 @@ public class EventRepository : IEventRepository
 {
     private const int PageSize = 20;
 
-    public EventRepository(EventDbContext dbContext)
+    public EventRepository(IContainer container)
     {
+        var dbContext = container.GetInstance<EventDbContext>();
         Events = dbContext.Events;
     }
 
     private DbSet<Core.Entities.Event> Events { get; }
+
+    public async Task AddEvent(Core.Entities.Event @event)
+    {
+        await Events.AddAsync(@event);
+    }
 
     public async Task<List<Core.Entities.Event>> GetEvents(int page)
     {

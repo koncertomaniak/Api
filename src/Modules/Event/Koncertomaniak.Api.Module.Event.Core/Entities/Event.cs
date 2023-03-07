@@ -8,6 +8,19 @@ namespace Koncertomaniak.Api.Module.Event.Core.Entities;
 [Table("Events")]
 public class Event : BaseEntity
 {
+    public Event(string name, string imageUrl, string description, DateTimeOffset happeningDate)
+    {
+        Id = Guid.NewGuid();
+        Name = name;
+        ImageUrl = imageUrl;
+        Description = description;
+        HappeningDate = happeningDate;
+    }
+
+    public Event()
+    {
+    }
+
     [MaxLength(EventEntityRules.MaxNameLenght)]
     [MinLength(EventEntityRules.MinNameLenght)]
     public string Name { get; set; } = null!;

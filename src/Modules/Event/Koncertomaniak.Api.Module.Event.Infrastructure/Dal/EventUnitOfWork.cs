@@ -1,14 +1,20 @@
-using Koncertomaniak.Api.Shared.Infrastructure.Db;
+using Lamar;
 
 namespace Koncertomaniak.Api.Module.Event.Infrastructure.Dal;
 
-public class EventUnitOfWork : IUnitOfWork
+public class EventUnitOfWork : IEventUnitOfWork, IDisposable
 {
     private readonly EventDbContext _dbContext;
 
-    public EventUnitOfWork(EventDbContext eventDbContext)
+    public EventUnitOfWork(IContainer container)
     {
-        _dbContext = eventDbContext;
+        var dbContext = container.GetInstance<EventDbContext>();
+        _dbContext = dbContext;
+    }
+
+    public void Dispose()
+    {
+        _dbContext.Dispose();
     }
 
     public async Task CommitChanges()

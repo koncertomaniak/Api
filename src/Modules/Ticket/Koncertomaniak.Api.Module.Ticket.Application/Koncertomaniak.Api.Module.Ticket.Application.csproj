@@ -7,13 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Lamar" Version="8.0.1" />
-        <PackageReference Include="MediatR" Version="11.0.0" />
+        <PackageReference Include="Lamar" Version="8.0.1"/>
+        <PackageReference Include="MediatR" Version="11.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Koncertomaniak.Api.Module.Ticket.Core\Koncertomaniak.Api.Module.Ticket.Core.csproj" />
-        <ProjectReference Include="..\Koncertomaniak.Api.Module.Ticket.Infrastructure\Koncertomaniak.Api.Module.Ticket.Infrastructure.csproj" />
+        <ProjectReference Include="..\Koncertomaniak.Api.Module.Ticket.Core\Koncertomaniak.Api.Module.Ticket.Core.csproj"/>
+        <ProjectReference Include="..\Koncertomaniak.Api.Module.Ticket.Infrastructure\Koncertomaniak.Api.Module.Ticket.Infrastructure.csproj"/>
     </ItemGroup>
 
 </Project>

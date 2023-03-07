@@ -6,7 +6,7 @@ namespace Koncertomaniak.Api.Module.Event.Infrastructure.Dal;
 
 public class EventDbContext : DbContext
 {
-    internal DbSet<Core.Entities.Event> Events { get; init; }
+    public DbSet<Core.Entities.Event> Events { get; init; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -18,5 +18,10 @@ public class EventDbContext : DbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
+
+    public override int SaveChanges()
+    {
+        return SaveChangesAsync().GetAwaiter().GetResult();
     }
 }
