@@ -7,9 +7,6 @@ public class DalRegistry : ServiceRegistry
 {
     public DalRegistry()
     {
-        //Use<EventDbContext>().Singleton();
-        //Injectable<EventDbContext>();
-
         For<IEventUnitOfWork>().Use<EventUnitOfWork>().Singleton();
         For<IEventRepository>().Use<EventRepository>().Singleton();
     }

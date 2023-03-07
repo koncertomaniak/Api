@@ -6,7 +6,7 @@ namespace Koncertomaniak.Api.Module.Event.Infrastructure.Dal;
 
 public class EventDbContext : DbContext
 {
-    public DbSet<Core.Entities.Event> Events { get; init; }
+    internal DbSet<Core.Entities.Event> Events { get; init; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

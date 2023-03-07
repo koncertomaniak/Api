@@ -17,10 +17,6 @@ public class Event : BaseEntity
         HappeningDate = happeningDate;
     }
 
-    public Event()
-    {
-    }
-
     [MaxLength(EventEntityRules.MaxNameLenght)]
     [MinLength(EventEntityRules.MinNameLenght)]
     public string Name { get; set; } = null!;
