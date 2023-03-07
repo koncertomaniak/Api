@@ -10,6 +10,7 @@ using Lamar;
 using Lamar.Microsoft.DependencyInjection;
 using MassTransit;
 using MediatR;
+using Environments = Koncertomaniak.Api.Shared.Infrastructure.Environments;
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
@@ -42,10 +43,10 @@ builder.Services.AddMassTransit(x =>
 
     x.UsingRabbitMq((ctx, cfg) =>
     {
-        cfg.Host("localhost", "/", h =>
+        cfg.Host(Environments.RabbitMqHost, "/", h =>
         {
-            h.Username("root");
-            h.Password("123");
+            h.Username(Environments.RabbitMqUsername);
+            h.Password(Environments.RabbitMqPassword);
         });
         cfg.ConfigureEndpoints(ctx);
     });

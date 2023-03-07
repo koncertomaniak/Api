@@ -8,6 +8,12 @@ public static class Environments
     public static bool AllowAutomaticMigration =>
         bool.Parse(Environment.GetEnvironmentVariable("ALLOW_AUTOMATIC_MIGRATION") ?? "false");
 
-    public static string RabbitMqUri =>
-        Environment.GetEnvironmentVariable("RABBITMQ_URI") ?? string.Empty;
+    public static string RabbitMqHost =>
+        Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? string.Empty;
+    
+    public static string RabbitMqUsername =>
+        Environment.GetEnvironmentVariable("RABBITMQ_USERNAME") ?? string.Empty;
+    
+    public static string RabbitMqPassword =>
+        Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD") ?? string.Empty;
 }

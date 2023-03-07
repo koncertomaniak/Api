@@ -24,7 +24,9 @@ test:
   stage: test
   variables:
     POSTGRES_CONNECTION_STRING: "Server=postgres;Database=koncertomaniak;Uid=test;Pwd=test;"
-    RABBITMQ_URI: "amqp://root:test@rabbitmq:5672"
+    RABBITMQ_HOST: "rabbitmq"
+    RABBITMQ_USERNAME: "root"
+    RABBITMQ_PASSWORD: "test"
   script:
     - "export PATH=\"$PATH:/root/.dotnet/tools\""
     - "sh scripts/dev_tools.sh"

@@ -29,7 +29,9 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "POSTGRES_CONNECTION_STRING": "",
-        "RABBITMQ_URI": "",
+        "RABBITMQ_HOST": "",
+        "RABBITMQ_USERNAME": "",
+        "RABBITMQ_PASSWORD": "",
         "ALLOW_AUTOMATIC_MIGRATION": "true"
       }
     },
