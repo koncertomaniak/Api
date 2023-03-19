@@ -27,9 +27,10 @@ test:
     RABBITMQ_HOST: "rabbitmq"
     RABBITMQ_USERNAME: "root"
     RABBITMQ_PASSWORD: "test"
+    AUTH_MODULE_ENABLED: "true"
   script:
     - "export PATH=\"$PATH:/root/.dotnet/tools\""
     - "sh scripts/dev_tools.sh"
     - "sh scripts/migration.sh"
     - "dotnet build --no-restore"
-    - "dotnet test --no-restore --no-build"
+    - "dotnet test --no-restore --no-build -e ASPNETCORE_ENVIRONMENT='test'"

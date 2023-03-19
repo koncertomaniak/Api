@@ -32,7 +32,9 @@
         "RABBITMQ_HOST": "",
         "RABBITMQ_USERNAME": "",
         "RABBITMQ_PASSWORD": "",
-        "ALLOW_AUTOMATIC_MIGRATION": "true"
+        "ADMIN_IP_WHITELIST": "",
+        "ALLOW_AUTOMATIC_MIGRATION": "true",
+        "AUTH_MODULE_ENABLED": "true"
       }
     },
     "IIS Express": {

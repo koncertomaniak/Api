@@ -12,13 +12,13 @@ public class TicketUnitOfWork : ITicketUnitOfWork, IDisposable
         _context = dbContext;
     }
 
-    public async Task CommitChanges()
-    {
-        await _context.SaveChangesAsync();
-    }
-
     public void Dispose()
     {
         _context.Dispose();
+    }
+
+    public async Task CommitChanges()
+    {
+        await _context.SaveChangesAsync();
     }
 }

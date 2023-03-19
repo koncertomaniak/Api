@@ -4,5 +4,4 @@ namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal;
 
 public interface ITicketUnitOfWork : IUnitOfWork
 {
-    
 }

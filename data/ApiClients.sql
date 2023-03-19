@@ -1,0 +1,1 @@
+INSERT INTO public."ApiClients" ("Id", "SecretKey", "ProviderName", "CreatedAt", "UpdatedAt") VALUES ('99826f7a-5e3b-4d2a-84f5-c87e48a3d980', 'a9e55c31010f49babdce7753fa251b7c', 'test-provider', '2023-03-18 21:03:12.184000 +00:00', '2023-03-18 21:03:14.235000 +00:00');

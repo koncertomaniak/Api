@@ -3,9 +3,13 @@ using Koncertomaniak.Api.Module.Event.Application.Commands.Events.GetEvents;
 using Koncertomaniak.Api.Module.Ticket.Api;
 using Koncertomaniak.Api.Module.Ticket.Application.Commands.Tickets;
 using Koncertomaniak.Api.Module.Ticket.Application.Consumers;
+using Koncertomaniak.Api.Module.Auth.Api;
+using Koncertomaniak.Api.Module.Auth.Application.Commands.VerifyApiKey;
 using Koncertomaniak.Api.Shared.Infrastructure;
+using Koncertomaniak.Api.Shared.Infrastructure.Filters;
 using Koncertomaniak.Api.Shared.Infrastructure.Mapper;
 using Koncertomaniak.Api.Shared.Infrastructure.Middlewares;
+using Koncertomaniak.Api.Shared.Infrastructure.QueueMessages;
 using Lamar;
 using Lamar.Microsoft.DependencyInjection;
 using MassTransit;
@@ -26,6 +30,7 @@ var assemblies = new[]
 registry.AddMediatR(assemblies);
 registry.IncludeRegistry<EventRegistry>();
 registry.IncludeRegistry<TicketRegistry>();
+registry.IncludeRegistry<AuthRegistry>();
 registry.AddAutoMapper(typeof(KoncertomaniakMapperProfile));
 registry.Scan(x =>
 {
@@ -34,12 +39,17 @@ registry.Scan(x =>
 });
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<AdminIpWhitelistFilter>(container => new AdminIpWhitelistFilter());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddRequestValidator();
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<AddTicketConsumer>();
+    x.AddConsumer<VerifyApiKeyConsumer>()
+        .Endpoint(e => e.Name = "verify-api-key");
+
+    x.AddRequestClient<VerifyApiKeyMessage>(new Uri("exchange:verify-api-key"));
 
     x.UsingRabbitMq((ctx, cfg) =>
     {
@@ -51,13 +61,16 @@ builder.Services.AddMassTransit(x =>
         cfg.ConfigureEndpoints(ctx);
     });
 });
-builder.Services.AddLamar(registry);
-
 builder.Host.UseLamar();
+
+builder.Services.AddLamar(registry);
 
 // Modules
 builder.Services.AddEventModule();
 builder.Services.AddTicketModule();
+
+if (Environments.AuthModuleEnabled)
+    builder.Services.AddAuthModule();
 
 var app = builder.Build();
 
@@ -75,8 +88,13 @@ app.UseMiddleware<GlobalExceptionMiddleware>();
 // Modules
 app.UseEventModule();
 app.UseTicketModule();
+app.UseAuthModule();
 
-app.UseAuthorization();
+app.UseCertificateForwarding();
+app.UseAuthentication();
+
+if (Environments.AuthModuleEnabled)
+    app.UseAuthorization();
 
 app.MapControllers();
 
