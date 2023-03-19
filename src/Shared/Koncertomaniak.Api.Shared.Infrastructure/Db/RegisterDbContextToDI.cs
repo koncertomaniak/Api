@@ -1,6 +1,4 @@
-﻿using Lamar;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Koncertomaniak.Api.Shared.Infrastructure.Db;

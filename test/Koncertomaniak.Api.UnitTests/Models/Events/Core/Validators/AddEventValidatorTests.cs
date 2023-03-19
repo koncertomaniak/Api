@@ -18,7 +18,7 @@ public class AddEventValidatorTests
 
         result.IsValid.Should().BeTrue();
     }
-    
+
     [Fact]
     public async Task TryValidateAddEvent_NotValid()
     {

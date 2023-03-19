@@ -10,20 +10,21 @@ public class AddEventRequestHandler : IRequestHandler<AddEventModel>
 {
     private readonly IEventRepository _eventRepository;
     private readonly IPublishEndpoint _publishEndpoint;
-    
+
     public AddEventRequestHandler(IEventRepository eventRepository, IPublishEndpoint publishEndpoint)
     {
         _eventRepository = eventRepository;
         _publishEndpoint = publishEndpoint;
     }
-    
+
     public async Task<Unit> Handle(AddEventModel request, CancellationToken cancellationToken)
     {
         var eventEntity =
             new Core.Entities.Event(request.Name, request.ImageUrl, request.Description, request.HappeningDate);
         await _eventRepository.AddEvent(eventEntity);
 
-        await _publishEndpoint.Publish(new AddTicketMessage(eventEntity, request.TickerProvider, request.TicketUrl), cancellationToken: cancellationToken);
+        await _publishEndpoint.Publish(new AddTicketMessage(eventEntity, request.TickerProvider, request.TicketUrl),
+            cancellationToken);
 
         return Unit.Value;
     }

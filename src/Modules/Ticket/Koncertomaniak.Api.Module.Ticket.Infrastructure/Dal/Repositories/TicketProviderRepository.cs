@@ -5,12 +5,12 @@ namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal.Repositories;
 
 public class TicketProviderRepository : ITicketProviderRepository
 {
-    private DbSet<TicketProvider> TicketProviders { get; }
-    
     public TicketProviderRepository(TicketDbContext dbContext)
     {
         TicketProviders = dbContext.TicketProviders;
     }
+
+    private DbSet<TicketProvider> TicketProviders { get; }
 
     public async Task<TicketProvider> GetTicketProviderByName(string provider)
     {

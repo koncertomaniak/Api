@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Koncertomaniak.Api.Module.Auth.Core</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Shared\Koncertomaniak.Api.Shared.Abstractions\Koncertomaniak.Api.Shared.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>
