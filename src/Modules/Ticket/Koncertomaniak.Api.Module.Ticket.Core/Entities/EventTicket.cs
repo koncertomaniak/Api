@@ -11,9 +11,9 @@ public class EventTicket : BaseEntity
     {
     }
 
-    public EventTicket(string url, TicketProvider ticketProvider, Event.Core.Entities.Event @event)
+    public EventTicket(Guid id, string url, TicketProvider ticketProvider, Event.Core.Entities.Event @event)
     {
-        Id = Guid.NewGuid();
+        Id = id;
         Url = url;
         Events = @event;
         TicketProvider = ticketProvider;

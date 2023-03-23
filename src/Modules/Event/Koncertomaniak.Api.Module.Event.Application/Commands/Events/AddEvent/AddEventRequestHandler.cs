@@ -23,7 +23,8 @@ public class AddEventRequestHandler : IRequestHandler<AddEventModel>
             new Core.Entities.Event(request.Name, request.ImageUrl, request.Description, request.HappeningDate);
         await _eventRepository.AddEvent(eventEntity);
 
-        await _publishEndpoint.Publish(new AddTicketMessage(eventEntity, request.TickerProvider, request.TicketUrl),
+        await _publishEndpoint.Publish(
+            new AddTicketMessage(Guid.NewGuid(), eventEntity, request.TickerProvider, request.TicketUrl),
             cancellationToken);
 
         return Unit.Value;

@@ -26,8 +26,14 @@ public class TicketRepository : ITicketRepository
 
     public async Task CreateEventTicket(EventTicket entity)
     {
-        //_dbContext.Entry(entity).State = EntityState.Unchanged;
-        _dbContext.Attach(entity.Events);
-        await EventTickets.AddAsync(entity);
+        foreach (var eventTicket in EventTickets)
+        {
+            var existing = EventTickets.Local.FirstOrDefault(x => x.Id == entity.Id);
+            if (existing != null)
+                return;
+
+            _dbContext.Attach(entity.Events);
+            await EventTickets.AddAsync(entity);
+        }
     }
 }

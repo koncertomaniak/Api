@@ -24,7 +24,8 @@ public class AddTicketConsumer : IConsumer<AddTicketMessage>
     {
         var ticketProviderEntity =
             await _ticketProviderRepository.GetTicketProviderByName(context.Message.ProviderName);
-        var ticketEntity = new EventTicket(context.Message.Url, ticketProviderEntity, context.Message.Event);
+        var ticketEntity = new EventTicket(context.Message.EventTicketId, context.Message.Url, ticketProviderEntity,
+            context.Message.Event);
 
         await _ticketRepository.CreateEventTicket(ticketEntity);
         await _unitOfWork.CommitChanges();
