@@ -1,12 +1,14 @@
 ﻿using Koncertomaniak.Api.Module.Ticket.Core.Entities;
+using Lamar;
 using Microsoft.EntityFrameworkCore;
 
 namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal.Repositories;
 
 public class TicketProviderRepository : ITicketProviderRepository
 {
-    public TicketProviderRepository(TicketDbContext dbContext)
+    public TicketProviderRepository(IContainer container)
     {
+        var dbContext = container.GetInstance<TicketDbContext>();
         TicketProviders = dbContext.TicketProviders;
     }
 
