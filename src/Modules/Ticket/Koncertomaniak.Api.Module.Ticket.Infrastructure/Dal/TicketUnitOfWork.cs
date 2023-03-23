@@ -2,7 +2,7 @@
 
 namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal;
 
-public class TicketUnitOfWork : ITicketUnitOfWork, IDisposable
+public class TicketUnitOfWork : ITicketUnitOfWork
 {
     private readonly TicketDbContext _context;
 
@@ -10,11 +10,6 @@ public class TicketUnitOfWork : ITicketUnitOfWork, IDisposable
     {
         var dbContext = container.GetInstance<TicketDbContext>();
         _context = dbContext;
-    }
-
-    public void Dispose()
-    {
-        _context.Dispose();
     }
 
     public async Task CommitChanges()

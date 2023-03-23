@@ -27,7 +27,7 @@ public static class StartupExtensions
         services.AddFluentValidationAutoValidation()
             .AddScoped<IValidator<AddEventModel>, AddEventValidator>();
     }
-    
+
     public static void AddLamarDefaults(this IServiceCollection services)
     {
         var registry = new ServiceRegistry();
@@ -37,7 +37,7 @@ public static class StartupExtensions
             typeof(GetEventsRequestHandler).Assembly,
             typeof(GetEventTicketsRequestHandler).Assembly
         };
-        
+
         registry.AddScoped<AdminIpWhitelistFilter>(_ => new AdminIpWhitelistFilter());
         registry.AddMediatR(assemblies);
         registry.IncludeRegistry<EventRegistry>();
@@ -65,6 +65,8 @@ public static class StartupExtensions
 
             x.UsingRabbitMq((ctx, cfg) =>
             {
+                cfg.UseMessageRetry(r => r.Interval(5, TimeSpan.FromSeconds(30)));
+
                 cfg.Host(Environments.RabbitMqHost, "/", h =>
                 {
                     h.Username(Environments.RabbitMqUsername);
@@ -88,7 +90,7 @@ public static class StartupExtensions
     {
         app.UseEventModule();
         app.UseTicketModule();
-        
+
         if (Environments.AuthModuleEnabled)
             app.UseAuthModule();
     }

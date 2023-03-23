@@ -2,7 +2,7 @@ using Lamar;
 
 namespace Koncertomaniak.Api.Module.Event.Infrastructure.Dal;
 
-public class EventUnitOfWork : IEventUnitOfWork, IDisposable
+public class EventUnitOfWork : IEventUnitOfWork
 {
     private readonly EventDbContext _dbContext;
 
@@ -10,11 +10,6 @@ public class EventUnitOfWork : IEventUnitOfWork, IDisposable
     {
         var dbContext = container.GetInstance<EventDbContext>();
         _dbContext = dbContext;
-    }
-
-    public void Dispose()
-    {
-        _dbContext.Dispose();
     }
 
     public async Task CommitChanges()
