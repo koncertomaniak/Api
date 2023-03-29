@@ -17,7 +17,6 @@ using Lamar;
 using Lamar.Microsoft.DependencyInjection;
 using MassTransit;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Environments = Koncertomaniak.Api.Shared.Infrastructure.Environments;
 
@@ -47,13 +46,6 @@ public static class StartupExtensions
                 options.DefaultChallengeScheme = ApiKeyDefaults.SchemeName;
             })
             .AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>(ApiKeyDefaults.SchemeName, _ => { });
-
-        services.AddAuthorization(options =>
-        {
-            options.DefaultPolicy = new AuthorizationPolicyBuilder(ApiKeyDefaults.SchemeName)
-                .RequireAuthenticatedUser()
-                .Build();
-        });
     }
 
     public static void AddRequestValidator(this IServiceCollection services)
