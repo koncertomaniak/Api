@@ -4,10 +4,12 @@ using Koncertomaniak.Api.Module.Event.Infrastructure.Dal;
 using Koncertomaniak.Api.Shared.Abstractions;
 using Koncertomaniak.Api.Shared.Infrastructure.Filters;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Koncertomaniak.Api.Module.Event.Api.Controllers;
 
+[Authorize]
 public class AddEventController : BaseController
 {
     private readonly IEventUnitOfWork _unitOfWork;
@@ -19,7 +21,6 @@ public class AddEventController : BaseController
 
     [HttpPost]
     [ServiceFilter(typeof(AdminIpWhitelistFilter))]
-    [ServiceFilter(typeof(ApiKeyAuthorizationFilter))]
     public async Task<IActionResult> AddEvent([FromBody] AddEventModel eventModel)
     {
         await Mediator.Send(eventModel);

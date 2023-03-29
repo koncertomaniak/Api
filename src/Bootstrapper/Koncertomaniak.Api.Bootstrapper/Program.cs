@@ -9,8 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddLamarDefaults();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGenDefaults();
 builder.Services.AddRequestValidator();
+builder.Services.AddApiKeyAuthentication();
 builder.Services.AddMassTransitDefaults();
 
 builder.Host.UseLamar();
@@ -31,6 +32,7 @@ app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseModules();
 
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

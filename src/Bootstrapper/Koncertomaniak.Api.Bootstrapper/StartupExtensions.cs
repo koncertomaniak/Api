@@ -9,6 +9,7 @@ using Koncertomaniak.Api.Module.Event.Core.Validators;
 using Koncertomaniak.Api.Module.Ticket.Api;
 using Koncertomaniak.Api.Module.Ticket.Application.Commands.Tickets;
 using Koncertomaniak.Api.Module.Ticket.Application.Consumers;
+using Koncertomaniak.Api.Shared.Infrastructure.Authentication.Api;
 using Koncertomaniak.Api.Shared.Infrastructure.Filters;
 using Koncertomaniak.Api.Shared.Infrastructure.Mapper;
 using Koncertomaniak.Api.Shared.Infrastructure.QueueMessages;
@@ -16,12 +17,45 @@ using Lamar;
 using Lamar.Microsoft.DependencyInjection;
 using MassTransit;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.OpenApi.Models;
 using Environments = Koncertomaniak.Api.Shared.Infrastructure.Environments;
 
 namespace Koncertomaniak.Api.Bootstrapper;
 
 public static class StartupExtensions
 {
+    public static void AddSwaggerGenDefaults(this IServiceCollection services)
+    {
+        services.AddSwaggerGen(configure =>
+        {
+            configure.SwaggerDoc("v1", new OpenApiInfo { Title = "Koncertomaniak API", Version = "v1" });
+            configure.AddSecurityDefinition("API Token", new OpenApiSecurityScheme
+            {
+                In = ParameterLocation.Header,
+                Name = "X-API-KEY",
+                Type = SecuritySchemeType.ApiKey
+            });
+        });
+    }
+
+    public static void AddApiKeyAuthentication(this IServiceCollection services)
+    {
+        services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = ApiKeyDefaults.SchemeName;
+                options.DefaultChallengeScheme = ApiKeyDefaults.SchemeName;
+            })
+            .AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>(ApiKeyDefaults.SchemeName, _ => { });
+
+        services.AddAuthorization(options =>
+        {
+            options.DefaultPolicy = new AuthorizationPolicyBuilder(ApiKeyDefaults.SchemeName)
+                .RequireAuthenticatedUser()
+                .Build();
+        });
+    }
+
     public static void AddRequestValidator(this IServiceCollection services)
     {
         services.AddFluentValidationAutoValidation()
