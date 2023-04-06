@@ -8,9 +8,9 @@ public class TicketRepository : ITicketRepository
 {
     private readonly TicketDbContext _dbContext;
 
-    public TicketRepository(IContainer container)
+    public TicketRepository(TicketDbContext dbContext)
     {
-        _dbContext = container.GetInstance<TicketDbContext>();
+        _dbContext = dbContext;
         EventTickets = _dbContext.EventTickets;
     }
 

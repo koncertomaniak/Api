@@ -6,9 +6,8 @@ namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal.Repositories;
 
 public class TicketProviderRepository : ITicketProviderRepository
 {
-    public TicketProviderRepository(IContainer container)
+    public TicketProviderRepository(TicketDbContext dbContext)
     {
-        var dbContext = container.GetInstance<TicketDbContext>();
         TicketProviders = dbContext.TicketProviders;
     }
 
