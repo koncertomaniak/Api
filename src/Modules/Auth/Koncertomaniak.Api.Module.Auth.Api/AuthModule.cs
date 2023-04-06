@@ -10,8 +10,6 @@ public static class AuthModule
 {
     public static IServiceCollection AddAuthModule(this IServiceCollection services)
     {
-        services.InjectDbContext(new AuthDbContext());
-
         return services;
     }
 

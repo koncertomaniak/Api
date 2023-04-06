@@ -10,8 +10,6 @@ public static class EventModule
 {
     public static IServiceCollection AddEventModule(this IServiceCollection services)
     {
-        services.InjectDbContext(new EventDbContext());
-
         return services;
     }
 

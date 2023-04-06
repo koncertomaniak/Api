@@ -7,9 +7,8 @@ public class EventRepository : IEventRepository
 {
     private const int PageSize = 20;
 
-    public EventRepository(IContainer container)
+    public EventRepository(EventDbContext dbContext)
     {
-        var dbContext = container.GetInstance<EventDbContext>();
         Events = dbContext.Events;
     }
 
@@ -18,6 +17,12 @@ public class EventRepository : IEventRepository
     public async Task AddEvent(Core.Entities.Event @event)
     {
         await Events.AddAsync(@event);
+    }
+
+    public async Task<Core.Entities.Event?> GetEventByName(string name)
+    {
+        return await Events.Where(e => e.Name.Contains(name))
+            .FirstOrDefaultAsync();
     }
 
     public async Task<List<Core.Entities.Event>> GetEvents(int page)
