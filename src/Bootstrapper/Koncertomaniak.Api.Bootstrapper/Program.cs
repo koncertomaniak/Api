@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGenDefaults();
 builder.Services.AddRequestValidator();
+builder.Services.AddCorsDefaults();
 builder.Services.AddApiKeyAuthentication();
 builder.Services.AddMassTransitDefaults();
 
@@ -30,6 +31,8 @@ app.UseHttpsRedirection();
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseModules();
+
+app.UseCors(Constants.CorsPolicyName);
 
 app.UseAuthentication();
 app.UseAuthorization();
