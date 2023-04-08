@@ -54,6 +54,19 @@ public static class StartupExtensions
             .AddScoped<IValidator<AddEventModel>, AddEventValidator>();
     }
 
+    public static void AddCorsDefaults(this IServiceCollection services)
+    {
+        services.AddCors(options =>
+        {
+            options.AddPolicy(Constants.CorsPolicyName, policy =>
+            {
+                policy.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+        });
+    }
+
     public static void AddLamarDefaults(this IServiceCollection services)
     {
         var registry = new ServiceRegistry();
