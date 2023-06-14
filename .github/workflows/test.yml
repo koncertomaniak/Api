@@ -10,7 +10,7 @@ jobs:
       - name: Check running containers
         run: docker ps -a
       - name: Setup .NET SDK
-        run: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v3
         with: 
           dotnet-version: '6.0.x'
       - name: Restore solution
@@ -23,7 +23,7 @@ jobs:
         run: dotnet build --no-restore
       - name: Test solution
         run: dotnet test --no-restore --no-build -e ASPNETCORE_ENVIRONMENT='test'
-        with:
+        env:
           POSTGRES_CONNECTION_STRING: "Server=postgres;Database=koncertomaniak;Uid=test;Pwd=test;"
           RABBITMQ_HOST: "rabbitmq"
           RABBITMQ_USERNAME: "root"
