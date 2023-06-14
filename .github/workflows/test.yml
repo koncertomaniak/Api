@@ -19,6 +19,8 @@ jobs:
         run: sh scripts/dev_tools.sh
       - name: Run migrations
         run: sh scripts/migration.sh
+        env:
+          POSTGRES_CONNECTION_STRING: "Server=postgres;Database=koncertomaniak;Uid=test;Pwd=test;"
       - name: Build solution
         run: dotnet build --no-restore
       - name: Test solution
