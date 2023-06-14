@@ -3,12 +3,24 @@ on:
 jobs: 
   app:
     runs-on: ubuntu-latest
+    services: 
+      postgres:
+        image: postgres:14.5-bullseye
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: koncertomaniak
+      rabbitmq:
+        image: rabbitmq:3-management-alpine
+        ports:
+          - 5672:5672
+        env:
+          RABBITMQ_DEFAULT_USER: root
+          RABBITMQ_DEFAULT_PASS: test
     steps:
       - uses: actions/checkout@v3
-      - name: Run docker-compose stack
-        run: docker compose -f docker-compose.test.yml up -d
-      - name: Check running containers
-        run: docker ps -a
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with: 
