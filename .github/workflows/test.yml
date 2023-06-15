@@ -40,7 +40,7 @@ jobs:
         run: dotnet test --no-restore --no-build -e ASPNETCORE_ENVIRONMENT='test'
         env:
           POSTGRES_CONNECTION_STRING: "Server=localhost;Database=koncertomaniak;Uid=test;Pwd=test;"
-          RABBITMQ_HOST: "rabbitmq"
+          RABBITMQ_HOST: "localhost"
           RABBITMQ_USERNAME: "root"
           RABBITMQ_PASSWORD: "test"
           AUTH_MODULE_ENABLED: "true"
