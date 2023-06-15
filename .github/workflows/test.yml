@@ -33,13 +33,13 @@ jobs:
       - name: Run migrations
         run: sh scripts/migration.sh
         env:
-          POSTGRES_CONNECTION_STRING: "Server=postgres;Database=koncertomaniak;Uid=test;Pwd=test;"
+          POSTGRES_CONNECTION_STRING: "Server=localhost;Database=koncertomaniak;Uid=test;Pwd=test;"
       - name: Build solution
         run: dotnet build --no-restore
       - name: Test solution
         run: dotnet test --no-restore --no-build -e ASPNETCORE_ENVIRONMENT='test'
         env:
-          POSTGRES_CONNECTION_STRING: "Server=postgres;Database=koncertomaniak;Uid=test;Pwd=test;"
+          POSTGRES_CONNECTION_STRING: "Server=localhost;Database=koncertomaniak;Uid=test;Pwd=test;"
           RABBITMQ_HOST: "rabbitmq"
           RABBITMQ_USERNAME: "root"
           RABBITMQ_PASSWORD: "test"
