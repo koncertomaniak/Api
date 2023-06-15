@@ -13,6 +13,11 @@ jobs:
           POSTGRES_USER: test
           POSTGRES_PASSWORD: test
           POSTGRES_DB: koncertomaniak
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
       rabbitmq:
         image: rabbitmq:3-management-alpine
         ports:
@@ -33,14 +38,14 @@ jobs:
       - name: Run migrations
         run: sh scripts/migration.sh
         env:
-          POSTGRES_CONNECTION_STRING: "Server=localhost;Database=koncertomaniak;Uid=test;Pwd=test;"
+          POSTGRES_CONNECTION_STRING: "Server=postgres;Database=koncertomaniak;Uid=test;Pwd=test;"
       - name: Build solution
         run: dotnet build --no-restore
       - name: Test solution
         run: dotnet test --no-restore --no-build -e ASPNETCORE_ENVIRONMENT='test'
         env:
-          POSTGRES_CONNECTION_STRING: "Server=localhost;Database=koncertomaniak;Uid=test;Pwd=test;"
-          RABBITMQ_HOST: "localhost"
+          POSTGRES_CONNECTION_STRING: "Server=postgres;Database=koncertomaniak;Uid=test;Pwd=test;"
+          RABBITMQ_HOST: "rabbitmq"
           RABBITMQ_USERNAME: "root"
           RABBITMQ_PASSWORD: "test"
           AUTH_MODULE_ENABLED: "true"
