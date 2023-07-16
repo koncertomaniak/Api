@@ -1,6 +1,5 @@
 ﻿using Koncertomaniak.Api.Module.Ticket.Core.Entities;
 using Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal;
-using Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal.Repositories;
 using Koncertomaniak.Api.Shared.Infrastructure.QueueMessages;
 using MassTransit;
 

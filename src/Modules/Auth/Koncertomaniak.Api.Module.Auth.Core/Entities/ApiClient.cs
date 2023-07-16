@@ -14,12 +14,8 @@ public class ApiClient : BaseEntity
     {
         SecretKey = secretKey;
         ProviderName = providerName;
-        CreatedAt = DateTimeOffset.Now;
-        UpdatedAt = DateTimeOffset.Now;
     }
 
     public string SecretKey { get; set; } = null!;
     public string ProviderName { get; set; } = null!;
-    public DateTimeOffset CreatedAt { get; set; }
-    public DateTimeOffset UpdatedAt { get; set; }
 }

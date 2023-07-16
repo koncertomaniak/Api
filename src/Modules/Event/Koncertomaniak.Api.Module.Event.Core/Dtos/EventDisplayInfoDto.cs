@@ -7,4 +7,11 @@ public class EventDisplayInfoDto
     public string? ImageUrl { get; set; }
     public string? Description { get; set; }
     public DateTimeOffset HappeningDate { get; set; }
+    public List<LocationDto>? Locations { get; set; }
+}
+
+public class LocationDto
+{
+    public string? City { get; set; }
+    public string? Place { get; set; }
 }

@@ -8,7 +8,7 @@ public class DalRegistry : ServiceRegistry
     public DalRegistry()
     {
         Use<EventDbContext>().Transient();
-        
+
         For<IEventUnitOfWork>().Use<EventUnitOfWork>().Singleton();
         For<IEventRepository>().Use<EventRepository>().Singleton();
     }

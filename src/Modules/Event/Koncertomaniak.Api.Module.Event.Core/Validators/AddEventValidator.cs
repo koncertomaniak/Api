@@ -15,5 +15,6 @@ public class AddEventValidator : AbstractValidator<AddEventModel>
         RuleFor(x => x.TicketUrl).Must(uri => Uri.TryCreate(uri, UriKind.Absolute, out _))
             .When(x => !string.IsNullOrEmpty(x.TicketUrl));
         RuleFor(x => x.TickerProvider).NotEmpty().NotNull();
+        RuleFor(x => x.Locations).NotNull();
     }
 }

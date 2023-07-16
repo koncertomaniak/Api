@@ -8,7 +8,7 @@ public class DalRegistry : ServiceRegistry
     public DalRegistry()
     {
         Use<TicketDbContext>().Transient();
-        
+
         For<ITicketUnitOfWork>().Use<TicketUnitOfWork>().Transient();
         For<ITicketRepository>().Use<TicketRepository>().Transient();
         For<ITicketProviderRepository>().Use<TicketProviderRepository>().Transient();

@@ -17,8 +17,6 @@ public class EventTicket : BaseEntity
         Url = url;
         Events = @event;
         TicketProvider = ticketProvider;
-        CreatedAt = DateTimeOffset.Now;
-        UpdatedAt = DateTimeOffset.Now;
     }
 
     [Url] public string Url { get; set; } = null!;
@@ -26,7 +24,4 @@ public class EventTicket : BaseEntity
     [ForeignKey("TicketProvidersPK")] public TicketProvider TicketProvider { get; set; } = null!;
 
     [ForeignKey("EventsPK")] public Event.Core.Entities.Event Events { get; set; } = null!;
-
-    public DateTimeOffset CreatedAt { get; set; }
-    public DateTimeOffset UpdatedAt { get; set; }
 }
