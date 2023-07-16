@@ -1,0 +1,57 @@
+name: Test
+on:
+  push:
+jobs: 
+  app:
+    runs-on: ubuntu-latest
+    services: 
+      postgres:
+        image: postgres:14.5-bullseye
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: koncertomaniak
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      rabbitmq:
+        image: rabbitmq:3-management-alpine
+        ports:
+          - 5672:5672
+        env:
+          RABBITMQ_DEFAULT_USER: root
+          RABBITMQ_DEFAULT_PASS: test
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with: 
+          dotnet-version: '6.0.x'
+      - uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-test
+      - name: Restore solution
+        run: dotnet restore
+      - name: Run dev_tools.sh
+        run: sh scripts/dev_tools.sh
+      - name: Run migrations
+        run: sh scripts/migration.sh
+        env:
+          POSTGRES_CONNECTION_STRING: "Server=localhost;Database=koncertomaniak;Uid=test;Pwd=test;"
+      - name: Build solution
+        run: dotnet build --no-restore
+      - name: Test solution
+        run: dotnet test --no-restore --no-build -e ASPNETCORE_ENVIRONMENT='test'
+        env:
+          POSTGRES_CONNECTION_STRING: "Server=localhost;Database=koncertomaniak;Uid=test;Pwd=test;"
+          RABBITMQ_HOST: "localhost"
+          RABBITMQ_USERNAME: "root"
+          RABBITMQ_PASSWORD: "test"
+          AUTH_MODULE_ENABLED: "true"
