@@ -1,4 +1,3 @@
-using Lamar;
 using Microsoft.EntityFrameworkCore;
 
 namespace Koncertomaniak.Api.Module.Event.Infrastructure.Dal.Repositories;
@@ -19,6 +18,13 @@ public class EventRepository : IEventRepository
         await Events.AddAsync(@event);
     }
 
+    public Task UpdateEvent(Core.Entities.Event @event)
+    {
+        Events.Update(@event);
+
+        return Task.CompletedTask;
+    }
+
     public async Task<Core.Entities.Event?> GetEventByName(string name)
     {
         return await Events.Where(e => e.Name.Contains(name))
@@ -28,6 +34,7 @@ public class EventRepository : IEventRepository
     public async Task<List<Core.Entities.Event>> GetEvents(int page)
     {
         return await Events.AsNoTracking()
+            .Include(e => e.HappeningLocation)
             .OrderBy(e => e.HappeningDate)
             .Skip(PageSize * page)
             .Take(PageSize)

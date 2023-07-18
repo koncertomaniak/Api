@@ -10,13 +10,19 @@ namespace Koncertomaniak.Api.Module.Event.Core.Entities;
 [Index(nameof(Name))]
 public class Event : BaseEntity
 {
-    public Event(string name, string imageUrl, string description, DateTimeOffset happeningDate)
+    private Event()
+    {
+    }
+
+    public Event(string name, string imageUrl, string description, DateTimeOffset happeningDate,
+        List<Location> happeningLocation)
     {
         Id = Guid.NewGuid();
         Name = name;
         ImageUrl = imageUrl;
         Description = description;
         HappeningDate = happeningDate;
+        HappeningLocation = happeningLocation;
     }
 
     [MaxLength(EventEntityRules.MaxNameLenght)]
@@ -28,8 +34,7 @@ public class Event : BaseEntity
     [MinLength(EventEntityRules.MinDescriptionLenght)]
     public string Description { get; set; } = null!;
 
-    public DateTimeOffset HappeningDate { get; set; }
+    [ForeignKey("EventsPK")] public List<Location> HappeningLocation { get; set; }
 
-    public DateTimeOffset CreatedAt { get; set; }
-    public DateTimeOffset UpdatedAt { get; set; }
+    public DateTimeOffset HappeningDate { get; set; }
 }

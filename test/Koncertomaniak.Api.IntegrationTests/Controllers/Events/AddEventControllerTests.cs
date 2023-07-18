@@ -14,9 +14,22 @@ public class AddEventControllerTests
     [Fact]
     public async Task AddEvents_200_OK()
     {
+        var locations = new List<LocationModel>
+        {
+            new()
+            {
+                City = "Warszawa",
+                Place = "COS Torwar"
+            },
+            new()
+            {
+                City = "Lublin",
+                Place = "Plac Zamkowy"
+            }
+        };
         var addEventModel = new AddEventModel("Test Koncert", "http://example.com/image.jpg",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", DateTimeOffset.Now.AddDays(1), "Empik",
-            "http://example.com");
+            "http://example.com", locations);
 
         await using var application = new WebServerFactoryFixture();
         using var client = application.CreateClient();

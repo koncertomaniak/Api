@@ -1,5 +1,4 @@
 ﻿using Koncertomaniak.Api.Module.Ticket.Core.Entities;
-using Lamar;
 using Microsoft.EntityFrameworkCore;
 
 namespace Koncertomaniak.Api.Module.Ticket.Infrastructure.Dal.Repositories;

@@ -3,6 +3,7 @@ using System;
 using Koncertomaniak.Api.Module.Event.Infrastructure.Dal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Koncertomaniak.Api.Module.Event.Infrastructure.Migrations
 {
     [DbContext(typeof(EventDbContext))]
-    partial class EventDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230715162434_AddLocationTable")]
+    partial class AddLocationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,9 +86,7 @@ namespace Koncertomaniak.Api.Module.Event.Infrastructure.Migrations
 
                     b.HasIndex("EventsPK");
 
-                    b.HasIndex("City", "Place");
-
-                    b.ToTable("Locations");
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("Koncertomaniak.Api.Module.Event.Core.Entities.Location", b =>

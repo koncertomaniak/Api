@@ -8,7 +8,7 @@ public class DalRegistry : ServiceRegistry
     public DalRegistry()
     {
         Use<AuthDbContext>().Transient();
-        
+
         For<IApiClientRepository>().Use<ApiClientRepository>().Singleton();
     }
 }

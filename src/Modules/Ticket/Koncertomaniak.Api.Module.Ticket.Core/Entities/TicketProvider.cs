@@ -10,7 +10,4 @@ public class TicketProvider : BaseEntity
     [MaxLength(50)] public string ServiceName { get; set; } = null!;
 
     [Url] public string ImageUrl { get; set; } = null!;
-
-    public DateTimeOffset CreatedAt { get; set; }
-    public DateTimeOffset UpdatedAt { get; set; }
 }
